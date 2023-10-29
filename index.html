@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link href="./style.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+
+<body>
+    <section id="invoice_manual">
+        <div id="inner_invoice">
+            <div class="header">
+                <div data-for="title">
+                    <h1>Invoice</h1>
+                    <!-- <img src="/images/logo/logo.jpeg" alt="logo"> -->
+                </div>
+                <div data-for="tax_title">
+                    <h5>tax invoice</h5>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="shipping">
+                    <h5 class="sub_tittle">BILLING INFORMATION</h5>
+                    <p class="text">Anson benny</p>
+                    <p class="text">Adimali</p>
+                    <p class="text">Ph: 1234567890</p>
+                </div>
+
+                <div class="sold_by">
+                    <h5 class="sub_tittle">Sold by</h5>
+                    <p class="text">invoice</p>
+                    <p class="text">kochi</p>
+                    <p class="text">kochi KERALA 682001</p>
+                    <p class="text">Ph: 1234567890</p>
+                    <p class="text">Email: info@mail.in</p>
+                </div>
+
+                <div class="invoice">
+                    <h5 class="sub_tittle">INVOICE DETAILS</h5>
+                    <div class="grid">
+                        <div>
+                            <h6 class="sub_tittle">invoice no :</h6>
+                        </div>
+                        <div>
+                            <p class="text">12343fasaq2</p>
+                        </div>
+                        <div>
+                            <h6 class="sub_tittle">Invoice date :</h6>
+                        </div>
+                        <div>
+                            <p class="text">
+                                <script>
+                                    const date = new Date()
+                                    document.write(`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`)
+                                </script>
+                            </p>
+                        </div>
+                        <div>
+                            <h6 class="sub_tittle">ORDER Id :</h6>
+                        </div>
+                        <div>
+                            <p class="text">64cf69a7e619ff52232e4268_0</p>
+                        </div>
+                        <div>
+                            <h6 class="sub_tittle">ORDER Date :</h6>
+                        </div>
+                        <div>
+                            <p class="text">64cf69a7e619ff52232e4268_0</p>
+                        </div>
+                        <div>
+                            <h6 class="sub_tittle">payment :</h6>
+                        </div>
+                        <div>
+                            <p class="text">Prepaid</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="products">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Unit Price</th>
+                        <th>Unit Discount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Tecno Camon 20 Pro (Dark Welkin, 128 GB) (8 GB RAM)</td>
+                        <td class="grey">2</td>
+                        <td class="grey">20000</td>
+                        <td class="grey">6000</td>
+                        <td class="grey">28000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="sub_total">
+                <div class="inner_total">
+                    <h5>net total (in value) : </h5>
+                    <h5>Rs. 28000</h5>
+                </div>
+            </div>
+
+            <div class="signature">
+                <img src="" alt="signature">
+                <h5>Authorized Signature for Vevve</h5>
+            </div>
+
+        </div>
+    </section>
+
+    <button id="download">download</button>
+
+    <script>
+        document.getElementById("download")
+            .addEventListener("click", () => {
+                const invoice = this.document.getElementById("invoice_manual");
+                console.log(invoice);
+                console.log(window);
+                var opt = {
+                    margin: 0.3,
+                    filename: 'myfile.pdf',
+                    image: { type: 'jpeg', quality: 1 },
+                    html2canvas: { scale: 8 },
+                    jsPDF: { unit: 'in', format: 'a4'/*, orientation: "landscape" */ }
+                };
+                html2pdf().from(invoice).set(opt).save();
+            })
+    </script>
+</body>
+
+</html>
